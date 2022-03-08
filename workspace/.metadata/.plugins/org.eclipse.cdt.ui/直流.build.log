@@ -1,0 +1,6 @@
+12:45:07 **** Incremental Build of configuration Debug for project 直流 ****
+make -j11 all 
+make: Nothing to be done for `all'.
+
+12:45:07 Build Finished (took 72ms)
+

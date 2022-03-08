@@ -1,0 +1,5 @@
+"src/fibo3.o"
+"src/fibo_button.o"
+"src/morse_code.o"
+"startup/startup_stm32.o"
+"startup/sysmem.o"

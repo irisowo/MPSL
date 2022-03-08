@@ -1,0 +1,24 @@
+02:23:52 **** Build of configuration Debug for project fibo.s ****
+make -j11 all 
+Building file: ../startup/startup_stm32.s
+Building file: ../startup/sysmem.c
+Invoking: MCU GCC Assembler
+Invoking: MCU GCC Compiler
+/Users/kyuuhikoji/Documents/workspace/fibo.s/Debug
+arm-none-eabi-as -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -g -o "startup/startup_stm32.o" "../startup/startup_stm32.s"
+/Users/kyuuhikoji/Documents/workspace/fibo.s/Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DSTM32 -DSTM32L4 -DSTM32L476RGTx -DNUCLEO_L476RG -DDEBUG -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"startup/sysmem.d" -MT"startup/sysmem.o" -o "startup/sysmem.o" "../startup/sysmem.c"
+Finished building: ../startup/startup_stm32.s
+ 
+Finished building: ../startup/sysmem.c
+ 
+Building target: fibo.s.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -T"/Users/kyuuhikoji/Documents/workspace/fibo.s/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "fibo.s.elf" @"objects.list"   -lm
+startup/startup_stm32.o: In function `LoopFillZerobss':
+/Users/kyuuhikoji/Documents/workspace/fibo.s/Debug/../startup/startup_stm32.s:83: undefined reference to `main'
+collect2: error: ld returned 1 exit status
+make: *** [fibo.s.elf] Error 1
+
+02:23:52 Build Finished (took 206ms)
+

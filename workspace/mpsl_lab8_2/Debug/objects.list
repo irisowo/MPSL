@@ -1,0 +1,4 @@
+"src/8_2.o"
+"src/libtmd.o"
+"startup/startup_stm32.o"
+"startup/sysmem.o"

@@ -1,0 +1,12 @@
+21:10:34 **** Incremental Build of configuration Debug for project mpsl_lab2_2 ****
+make -j11 all 
+Building file: ../src/post.s
+Invoking: MCU GCC Assembler
+/Users/kyuuhikoji/Documents/workspace/mpsl_lab2_2/Debug
+arm-none-eabi-as -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -g -o "src/post.o" "../src/post.s"
+../src/post.s: Assembler messages:
+../src/post.s: Error: unaligned opcodes detected in executable segment
+make: *** [src/post.o] Error 1
+
+21:10:34 Build Finished (took 73ms)
+

@@ -1,0 +1,120 @@
+#include "stm32l476xx.h"
+//#include "util.h"
+
+#define SET_REG(REG, MASK, VAL) {((REG)=((REG) & (~(MASK))) | (VAL));};
+
+char msg[105];
+
+
+
+int UART_Transmit(uint8_t *arr, uint32_t size){
+ //TODO: Sent string to UART and return how many bytes are successfully transmitted.
+ for(unsigned int i=0; i<size; i++){
+  USART3->TDR = *(arr+i);
+  while((USART3->ISR & USART_ISR_TC) == 0){}
+ }
+ return size;
+}
+
+int UART_Receive(char *c){
+ while (!(USART3->ISR & USART_ISR_RXNE));
+ *c = USART3->RDR;
+ return *c;
+}
+
+void readline() {
+ char c;
+ int pos = 0;
+ do {
+  UART_Receive(&c);
+  if (c == '\r') {
+   UART_Transmit((uint8_t *) "\r\n", 2);
+   c = '\0';
+  }
+  else {
+   UART_Transmit((uint8_t *) &c, 1);
+  }
+  if (c == 0x8) {
+   pos = pos > 0 ? pos - 1 : 0;
+  }
+  else {
+   msg[pos] = c;
+   pos++;
+  }
+ } while (c != '\0');
+}
+
+void init_UART() {
+// Initialize UART registers
+ RCC->APB1ENR1 |= RCC_APB1ENR1_USART3EN;
+ SET_REG(USART3->CR1, USART_CR1_M | USART_CR1_PS | USART_CR1_PCE | USART_CR1_TE | USART_CR1_RE | USART_CR1_OVER8, USART_CR1_TE | USART_CR1_RE);
+ SET_REG(USART3->CR2, USART_CR2_STOP, 0x0);
+ SET_REG(USART3->CR3, (USART_CR3_RTSE | USART_CR3_CTSE | USART_CR3_ONEBIT), 0x0);
+
+
+ USART3->CR2 &= ~(USART_CR2_LINEN | USART_CR2_CLKEN);
+ USART3->CR3 &= ~(USART_CR3_SCEN | USART_CR3_HDSEL | USART_CR3_IREN);
+
+ USART3->BRR &= ~USART_BRR_DIV_MANTISSA;
+  USART3->BRR |= (26 << 4);
+  USART3->BRR &= ~USART_BRR_DIV_FRACTION;
+  USART3->BRR |= (0000 << 0);
+ // Enable UART
+ USART3->CR1 |= (USART_CR1_UE);
+
+}
+
+void GPIO_init(){
+ RCC->AHB2ENR |= RCC_AHB2ENR_GPIOCEN;
+
+ SET_REG(GPIOC->MODER, GPIO_MODER_MODE10, 2 << 20);
+ SET_REG(GPIOC->AFR[1], GPIO_AFRH_AFSEL10, GPIO_AFRH_AFSEL10_0 | GPIO_AFRH_AFSEL10_1 | GPIO_AFRH_AFSEL10_2);
+ SET_REG(GPIOC->OSPEEDR, GPIO_OSPEEDR_OSPEED10, 2 << 20);
+
+ SET_REG(GPIOC->MODER, GPIO_MODER_MODE11, 2 << 22);
+ SET_REG(GPIOC->AFR[1], GPIO_AFRH_AFSEL11, GPIO_AFRH_AFSEL11_0 | GPIO_AFRH_AFSEL11_1 | GPIO_AFRH_AFSEL11_2);
+ SET_REG(GPIOC->OSPEEDR, GPIO_OSPEEDR_OSPEED11, 2 << 22);
+
+
+ SET_REG(GPIOC->MODER, GPIO_MODER_MODE13, 0 << 26);
+
+ RCC->AHB2ENR |= RCC_AHB2ENR_GPIOAEN;
+ SET_REG(GPIOA->MODER, GPIO_MODER_MODE5, 1 << 10);
+
+}
+
+int check_button(){
+ int cnt = 0;
+ if(GPIOC->IDR & (0x1 << 13)) return 0;
+ while(!(GPIOC->IDR & (0x1 << 13)) && cnt++ < 1000);
+ return !(GPIOC->IDR & (0x1 << 13));
+}
+
+
+int main(){
+ //fpu_enable();
+ GPIO_init();
+ init_UART();
+ //ADC1_Init();
+ //SysTick_UserConfig(0.01f);
+ //while((GPIOC->IDR & 1 << 13)!=0);
+ UART_Transmit("AT+ROLE=0\r\n", 11);
+ //UART_Transmit("AT+UART=9600,1,1\r\n", strlen("AT+UART=9600,1,1\r\n"));
+ UART_Transmit("AT+CMODE=1\r\n", strlen("AT+CMODE=1\r\n"));
+ //UART_Transmit("AT+NAME=HC-8888\r\n", strlen("AT+NAME=HC-8888\r\n"));
+ //UART_Transmit("AT+PSWD=0000\r\n", strlen("AT+NAME=0000\r\n"));
+ readline();
+ while(!(msg[0] == 'O' && msg[1] == 'K')){
+  GPIOA->BSRR = 1 << 5;
+ }
+ while(1){
+  if (!strcmp(msg, "led on")){
+   GPIOA->BSRR = 1 << 5;
+  }
+  else if (!strcmp(msg, "led off")) {
+   GPIOA->BRR = 1 << 5;
+  }
+ }
+
+
+}

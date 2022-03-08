@@ -1,0 +1,4 @@
+"src/GPIO_init.o"
+"src/keypad.o"
+"startup/startup_stm32.o"
+"startup/sysmem.o"

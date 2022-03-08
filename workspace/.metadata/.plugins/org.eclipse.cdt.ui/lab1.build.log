@@ -1,0 +1,30 @@
+16:31:03 **** Build of configuration Debug for project lab1 ****
+make -j11 all 
+Building file: ../startup/startup_stm32.s
+Building file: ../startup/sysmem.c
+Building file: ../src/main.s
+Invoking: MCU GCC Assembler
+Invoking: MCU GCC Compiler
+Invoking: MCU GCC Assembler
+/Users/kyuuhikoji/Documents/workspace/lab1/Debug
+arm-none-eabi-as -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -g -o "startup/startup_stm32.o" "../startup/startup_stm32.s"
+/Users/kyuuhikoji/Documents/workspace/lab1/Debug
+/Users/kyuuhikoji/Documents/workspace/lab1/Debug
+arm-none-eabi-as -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -g -o "src/main.o" "../src/main.s"
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DSTM32 -DSTM32L4 -DSTM32L476RGTx -DNUCLEO_L476RG -DDEBUG -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"startup/sysmem.d" -MT"startup/sysmem.o" -o "startup/sysmem.o" "../startup/sysmem.c"
+Finished building: ../startup/startup_stm32.s
+Finished building: ../src/main.s
+ 
+ 
+Finished building: ../startup/sysmem.c
+ 
+Building target: lab1.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -T"/Users/kyuuhikoji/Documents/workspace/lab1/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "lab1.elf" @"objects.list"   -lm
+startup/startup_stm32.o: In function `LoopFillZerobss':
+/Users/kyuuhikoji/Documents/workspace/lab1/Debug/../startup/startup_stm32.s:83: undefined reference to `main'
+collect2: error: ld returned 1 exit status
+make: *** [lab1.elf] Error 1
+
+16:31:04 Build Finished (took 346ms)
+

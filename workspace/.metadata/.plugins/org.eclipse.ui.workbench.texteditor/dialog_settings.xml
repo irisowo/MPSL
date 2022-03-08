@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item value="false" key="isRegEx"/>
+		<item value="readline" key="selection"/>
+		<item value="false" key="casesensitive"/>
+		<item value="false" key="incremental"/>
+		<item value="true" key="wrap"/>
+		<item value="false" key="wholeword"/>
+		<list key="findhistory">
+			<item value="readline"/>
+			<item value="UART_Receive"/>
+			<item value="9600"/>
+			<item value="duty"/>
+			<item value="Timer_init"/>
+			<item value="UART_Transmit"/>
+			<item value="transmit"/>
+			<item value="Transmit"/>
+		</list>
+		<list key="replacehistory">
+			<item value="Xi"/>
+			<item value="Yi"/>
+			<item value="get_cur_cnt_value"/>
+			<item value="Delay1s"/>
+			<item value="press_button()"/>
+			<item value="set_HCLK"/>
+			<item value="ROW_MAX"/>
+			<item value="row_i"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item value="290" key="DIALOG_WIDTH"/>
+		<item value="1|.SF NS Text|11.0|0|COCOA|1|.SFNSText" key="DIALOG_FONT_NAME"/>
+		<item value="409" key="DIALOG_HEIGHT"/>
+		<item value="791" key="DIALOG_X_ORIGIN"/>
+		<item value="228" key="DIALOG_Y_ORIGIN"/>
+	</section>
+</section>

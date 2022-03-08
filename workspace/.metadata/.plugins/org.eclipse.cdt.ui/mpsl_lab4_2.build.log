@@ -1,0 +1,6 @@
+12:44:27 **** Incremental Build of configuration Debug for project mpsl_lab4_2 ****
+make -j11 all 
+make: Nothing to be done for `all'.
+
+12:44:27 Build Finished (took 81ms)
+

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;mpsl_lab7_tmp/src/GPIO_init.s&apos; to &apos;max_init.s&apos;" description="Rename resource &apos;GPIO_init.s&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/GPIO_init.s" name="max_init.s" stamp="1606826986979" updateReferences="true"/>
+</session>

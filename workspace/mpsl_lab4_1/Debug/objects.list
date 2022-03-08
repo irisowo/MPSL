@@ -1,0 +1,4 @@
+"src/0toF.o"
+"src/test.o"
+"startup/startup_stm32.o"
+"startup/sysmem.o"

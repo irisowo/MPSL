@@ -1,0 +1,6 @@
+"src/GPIO_init.o"
+"src/p3.o"
+"src/p3_1.o"
+"src/p3_2.o"
+"startup/startup_stm32.o"
+"startup/sysmem.o"

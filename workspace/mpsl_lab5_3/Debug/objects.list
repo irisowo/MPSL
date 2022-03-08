@@ -1,0 +1,7 @@
+"src/GPIO_init.o"
+"src/multi_button.o"
+"src/multi_button2.o"
+"src/multi_button3.o"
+"src/multi_button4.o"
+"startup/startup_stm32.o"
+"startup/sysmem.o"

@@ -1,0 +1,40 @@
+22:03:21 **** Incremental Build of configuration Debug for project mpsl_lab8_2_2 ****
+make -j11 all 
+Building file: ../src/8_2.c
+Invoking: MCU GCC Compiler
+/Users/kyuuhikoji/Documents/workspace/mpsl_lab8_2_2/Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DSTM32 -DSTM32L4 -DSTM32L476RGTx -DNUCLEO_L476RG -DDEBUG -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/8_2.d" -MT"src/8_2.o" -o "src/8_2.o" "../src/8_2.c"
+In file included from ../src/stm32l476xx.h:184:0,
+                 from ../src/libtmd.h:7,
+                 from ../src/8_2.c:2:
+../src/core_cm4.h: In function 'NVIC_SystemReset':
+../src/core_cm4.h:1792:3: warning: implicit declaration of function '__DSB'; did you mean '__ASM'? [-Wimplicit-function-declaration]
+   __DSB();                                                          /* Ensure all outstanding memory accesses included
+   ^~~~~
+   __ASM
+../src/core_cm4.h:1801:5: warning: implicit declaration of function '__NOP'; did you mean '__IOM'? [-Wimplicit-function-declaration]
+     __NOP();
+     ^~~~~
+     __IOM
+Finished building: ../src/8_2.c
+ 
+Building target: mpsl_lab8_2_2.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -T"/Users/kyuuhikoji/Documents/workspace/mpsl_lab8_2_2/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "mpsl_lab8_2_2.elf" @"objects.list"   -lm
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-writer.o): In function `_write_r':
+writer.c:(.text._write_r+0x12): undefined reference to `_write'
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-closer.o): In function `_close_r':
+closer.c:(.text._close_r+0xc): undefined reference to `_close'
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-fstatr.o): In function `_fstat_r':
+fstatr.c:(.text._fstat_r+0x10): undefined reference to `_fstat'
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-isattyr.o): In function `_isatty_r':
+isattyr.c:(.text._isatty_r+0xc): undefined reference to `_isatty'
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-lseekr.o): In function `_lseek_r':
+lseekr.c:(.text._lseek_r+0x12): undefined reference to `_lseek'
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-readr.o): In function `_read_r':
+readr.c:(.text._read_r+0x12): undefined reference to `_read'
+collect2: error: ld returned 1 exit status
+make: *** [mpsl_lab8_2_2.elf] Error 1
+
+22:03:21 Build Finished (took 400ms)
+

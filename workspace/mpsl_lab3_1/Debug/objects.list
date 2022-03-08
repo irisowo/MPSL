@@ -1,0 +1,4 @@
+"src/led.o"
+"src/prac_led.o"
+"startup/startup_stm32.o"
+"startup/sysmem.o"

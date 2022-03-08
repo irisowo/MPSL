@@ -1,0 +1,4 @@
+"src/8_1.o"
+"src/8_1_hello.o"
+"startup/startup_stm32.o"
+"startup/sysmem.o"

@@ -1,0 +1,4 @@
+"src/7_3_tmp.o"
+"src/max_init.o"
+"startup/startup_stm32.o"
+"startup/sysmem.o"
